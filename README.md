@@ -1,2 +1,2 @@
-# professor-app
-Android mobile client for professor
+# Minha Turma - Aplicativo do aluno
+Aplicativo android para uso exclusivo dos alunos
