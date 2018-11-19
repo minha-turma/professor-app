@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/baseline_fiber_new_black_24dp"
+            android:title="Novidades" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/baseline_beenhere_black_24dp"
+            android:title="Presença" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/baseline_view_list_black_24dp"
+            android:title="Quiz" />
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/baseline_book_black_24dp"
+            android:title="Minhas pesquisas" />
+        <item
+          android:id="@+id/nav_message"
+          android:icon="@drawable/baseline_mail_black_24dp"
+          android:title="Mensagens" />
+    </group>
+
+    <item android:title="Ações">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Configurações" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/baseline_power_settings_new_black_24dp"
+                android:title="Sair" />
+        </menu>
+    </item>
+
+</menu>
