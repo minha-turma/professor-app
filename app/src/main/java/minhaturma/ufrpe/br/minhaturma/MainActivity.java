@@ -1,9 +1,8 @@
 package minhaturma.ufrpe.br.minhaturma;
 
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -32,6 +31,13 @@ MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        navigationView.setCheckedItem(R.id.news);
+
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.add(R.id.fragment_container, NewsFragment.getInstance());
+        ft.commit();
     }
 
     @Override
@@ -72,19 +78,22 @@ MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.news) {
+            ft.replace(R.id.fragment_container, NewsFragment.getInstance());
+        } else if (id == R.id.presence) {
+            ft.replace(R.id.fragment_container, PresenceFragment.getInstance());
+        } else if (id == R.id.quiz) {
+            ft.replace(R.id.fragment_container, QuizFragment.getInstance());
+        } else if (id == R.id.assignments) {
+            ft.replace(R.id.fragment_container, AssignmentsFragment.getInstance());
+        } else if (id == R.id.messages) {
+            ft.replace(R.id.fragment_container, MessagesFragment.getInstance());
         }
+
+        ft.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
