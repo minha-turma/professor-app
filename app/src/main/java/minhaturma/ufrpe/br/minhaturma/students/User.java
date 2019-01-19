@@ -8,14 +8,14 @@ public class User extends Entity {
     String username;
     String password;
 
-    String accessToken;
+    String access_token;
 
     public User(int id, String name, String username, String password, String accessToken) {
         super(id);
         this.name = name;
         this.username = username;
         this.password = password;
-        this.accessToken = accessToken;
+        this.access_token = accessToken;
     }
 
     public String getName() {
@@ -42,11 +42,11 @@ public class User extends Entity {
         this.password = password;
     }
 
-    public String getAccessToken() {
-        return accessToken;
+    public String getAccess_token() {
+        return access_token;
     }
 
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
+    public void setAccess_token(String accessToken) {
+        this.access_token = accessToken;
     }
 }

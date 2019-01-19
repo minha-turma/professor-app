@@ -1,5 +1,7 @@
 package minhaturma.ufrpe.br.minhaturma;
 
+import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
@@ -12,11 +14,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.List;
+
 import minhaturma.ufrpe.br.minhaturma.assignments.AssignmentsFragment;
+import minhaturma.ufrpe.br.minhaturma.auth.AuthService;
+import minhaturma.ufrpe.br.minhaturma.commons.RefreshableView;
 import minhaturma.ufrpe.br.minhaturma.messages.MessagesFragment;
+import minhaturma.ufrpe.br.minhaturma.network.interceptor.AuthInterceptor;
 import minhaturma.ufrpe.br.minhaturma.news.NewsFragment;
 import minhaturma.ufrpe.br.minhaturma.presences.PresenceFragment;
 import minhaturma.ufrpe.br.minhaturma.quizzes.QuizFragment;
+import minhaturma.ufrpe.br.minhaturma.students.LoginActivity;
 
 public class
 MainActivity extends AppCompatActivity
@@ -71,7 +79,25 @@ MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.logout) {
+
+            AuthService service = AuthService.getInstance();
+            service.logout();
+
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            finish();
+
+            return true;
+        }
+
+        if (id == R.id.refresh) {
+
+            Fragment visibleFragment = getVisibleFragment();
+
+            if (visibleFragment != null && visibleFragment instanceof RefreshableView) {
+                ((RefreshableView) visibleFragment).onRefresh();
+            }
+
             return true;
         }
 
@@ -96,7 +122,7 @@ MainActivity extends AppCompatActivity
         } else if (id == R.id.assignments) {
             ft.replace(R.id.fragment_container, AssignmentsFragment.getInstance());
         } else if (id == R.id.messages) {
-            ft.replace(R.id.fragment_container, MessagesFragment.getInstance());
+            ft.replace(R.id.fragment_container, MessagesFragment.getInstance(), MessagesFragment.TAG);
         }
 
         ft.commit();
@@ -104,5 +130,17 @@ MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public Fragment getVisibleFragment(){
+        FragmentManager fragmentManager = MainActivity.this.getSupportFragmentManager();
+        List<Fragment> fragments = fragmentManager.getFragments();
+        if(fragments != null){
+            for(Fragment fragment : fragments){
+                if(fragment != null && fragment.isVisible())
+                    return fragment;
+            }
+        }
+        return null;
     }
 }

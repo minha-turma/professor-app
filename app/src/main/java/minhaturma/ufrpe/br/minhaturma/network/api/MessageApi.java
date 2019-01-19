@@ -12,7 +12,7 @@ import retrofit2.http.GET;
  */
 public interface MessageApi {
 
-    @GET("/message/")
+    @GET("/api/message")
     Observable<List<Message>> list();
 
 }
