@@ -1,4 +1,4 @@
-package minhaturma.ufrpe.br.minhaturma;
+package minhaturma.ufrpe.br.minhaturma.news;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,13 +9,15 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import minhaturma.ufrpe.br.minhaturma.R;
+
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.RecyclerNewsViewHolder>{
 
     public static ClickRecyclerView_Interface clickRecyclerViewInterface;
     Context mctx;
-    private List<NewsModel> mList;
+    private List<News> mList;
 
-    public NewsAdapter(Context ctx, List<NewsModel> list, ClickRecyclerView_Interface clickRecyclerViewInterface) {
+    public NewsAdapter(Context ctx, List<News> list, ClickRecyclerView_Interface clickRecyclerViewInterface) {
         this.mctx = ctx;
         this.mList = list;
         this.clickRecyclerViewInterface = clickRecyclerViewInterface;
@@ -29,7 +31,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.RecyclerNewsVi
 
     @Override
     public void onBindViewHolder(NewsAdapter.RecyclerNewsViewHolder holder, int position) {
-        NewsModel pessoa = mList.get(position);
+        News pessoa = mList.get(position);
 
         holder.viewTitle.setText(pessoa.getTitle());
     }

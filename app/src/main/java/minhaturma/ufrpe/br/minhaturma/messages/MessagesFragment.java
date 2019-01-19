@@ -1,4 +1,4 @@
-package minhaturma.ufrpe.br.minhaturma;
+package minhaturma.ufrpe.br.minhaturma.messages;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -6,20 +6,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class PresenceFragment extends Fragment {
+import minhaturma.ufrpe.br.minhaturma.R;
 
-    static PresenceFragment instance;
+public class MessagesFragment extends Fragment {
 
-    public static PresenceFragment getInstance() {
+    static MessagesFragment instance;
+
+    public static MessagesFragment getInstance() {
         if (instance == null) {
-            instance = new PresenceFragment();
+            instance = new MessagesFragment();
         }
         return instance;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_presence, container, false);
+        return inflater.inflate(R.layout.fragment_messages, container, false);
     }
 
 }

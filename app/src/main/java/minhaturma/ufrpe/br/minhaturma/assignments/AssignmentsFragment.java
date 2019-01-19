@@ -1,10 +1,12 @@
-package minhaturma.ufrpe.br.minhaturma;
+package minhaturma.ufrpe.br.minhaturma.assignments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import minhaturma.ufrpe.br.minhaturma.R;
 
 public class AssignmentsFragment extends Fragment {
 

@@ -1,4 +1,4 @@
-package minhaturma.ufrpe.br.minhaturma;
+package minhaturma.ufrpe.br.minhaturma.news;
 
 public interface ClickRecyclerView_Interface {
 

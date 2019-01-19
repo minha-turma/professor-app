@@ -1,7 +1,6 @@
-package minhaturma.ufrpe.br.minhaturma;
+package minhaturma.ufrpe.br.minhaturma.news;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,19 +9,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
-public class NewsFragment extends Fragment implements ClickRecyclerView_Interface{
+import minhaturma.ufrpe.br.minhaturma.R;
+
+public class NewsFragment extends Fragment implements ClickRecyclerView_Interface {
 
     static NewsFragment instance;
 
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     NewsAdapter adapter;
-    private List<NewsModel> newsList = new ArrayList<>();
+    private List<News> newsList = new ArrayList<>();
 
     public static NewsFragment getInstance() {
         if (instance == null) {
@@ -54,11 +52,11 @@ public class NewsFragment extends Fragment implements ClickRecyclerView_Interfac
         mRecyclerView.setAdapter(adapter);
     }
 
-    private List<NewsModel> generateList(){
-        List<NewsModel> list = new ArrayList<>();
+    private List<News> generateList(){
+        List<News> list = new ArrayList<>();
 
         for(int i=0;i<20;i++){
-            NewsModel n = new NewsModel(i+"");
+            News n = new News(i+"");
             list.add(n);
         }
         return list;

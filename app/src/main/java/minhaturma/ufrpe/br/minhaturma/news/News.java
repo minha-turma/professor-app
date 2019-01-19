@@ -1,17 +1,17 @@
-package minhaturma.ufrpe.br.minhaturma;
+package minhaturma.ufrpe.br.minhaturma.news;
 
-public class NewsModel {
+public class News {
 
     private String title;
     private String integralText;
     private String author;
     private String resume;
 
-    public NewsModel(String title){
+    public News(String title){
         this.title = title;
     }
 
-    public NewsModel(String title, String integralText, String author, String resume) {
+    public News(String title, String integralText, String author, String resume) {
         this.title = title;
         this.integralText = integralText;
         this.author = author;

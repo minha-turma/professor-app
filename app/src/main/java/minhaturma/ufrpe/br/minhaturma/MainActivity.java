@@ -12,6 +12,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import minhaturma.ufrpe.br.minhaturma.assignments.AssignmentsFragment;
+import minhaturma.ufrpe.br.minhaturma.messages.MessagesFragment;
+import minhaturma.ufrpe.br.minhaturma.news.NewsFragment;
+import minhaturma.ufrpe.br.minhaturma.presences.PresenceFragment;
+import minhaturma.ufrpe.br.minhaturma.quizzes.QuizFragment;
+
 public class
 MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
