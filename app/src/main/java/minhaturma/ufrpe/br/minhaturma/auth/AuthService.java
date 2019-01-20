@@ -32,10 +32,6 @@ public class AuthService {
     return mSharedPreferences.getString("access_token", null) != null;
   }
 
-  public int getLoggedUserId() {
-    return mSharedPreferences.getInt("id", -1);
-  }
-
   public String getAccessToken() {
     return mSharedPreferences.getString("access_token", null);
   }
@@ -43,14 +39,12 @@ public class AuthService {
   public void authenticate(User user) {
     SharedPreferences.Editor editor = mSharedPreferences.edit();
     editor.putString("access_token", user.getAccess_token());
-    editor.putInt("id", user.getId());
     editor.commit();
   }
 
   public void logout() {
     SharedPreferences.Editor editor = mSharedPreferences.edit();
     editor.remove("access_token");
-    editor.remove("id");
     editor.commit();
   }
 }

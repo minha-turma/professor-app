@@ -27,11 +27,11 @@
     <item android:title="Ações">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="Configurações" />
+                android:id="@+id/profile"
+                android:icon="@drawable/round_person_black_24dp"
+                android:title="Perfil" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/logout"
                 android:icon="@drawable/baseline_power_settings_new_black_24dp"
                 android:title="Sair" />
         </menu>

@@ -24,6 +24,7 @@ import minhaturma.ufrpe.br.minhaturma.news.NewsFragment;
 import minhaturma.ufrpe.br.minhaturma.presences.PresenceFragment;
 import minhaturma.ufrpe.br.minhaturma.quizzes.QuizFragment;
 import minhaturma.ufrpe.br.minhaturma.students.LoginActivity;
+import minhaturma.ufrpe.br.minhaturma.students.ProfileFragment;
 
 public class
 MainActivity extends AppCompatActivity
@@ -77,18 +78,6 @@ MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.logout) {
-
-            AuthService service = AuthService.getInstance();
-            service.logout();
-
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
-            finish();
-
-            return true;
-        }
-
         if (id == R.id.refresh) {
 
             Fragment visibleFragment = getVisibleFragment();
@@ -123,6 +112,11 @@ MainActivity extends AppCompatActivity
         } else if (id == R.id.messages) {
             ft.replace(R.id.fragment_container, MessagesFragment.getInstance(), MessagesFragment.TAG);
             setTitle(MessagesFragment.getInstance().getTitle());
+        } else if (id == R.id.profile) {
+            ft.replace(R.id.fragment_container, ProfileFragment.getInstance(), ProfileFragment.TAG);
+            setTitle(ProfileFragment.getInstance().getTitle());
+        } else if (id == R.id.logout) {
+            logout();
         }
 
         ft.commit();
@@ -142,5 +136,13 @@ MainActivity extends AppCompatActivity
             }
         }
         return null;
+    }
+
+    private void logout() {
+        AuthService service = AuthService.getInstance();
+        service.logout();
+
+        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        finish();
     }
 }
