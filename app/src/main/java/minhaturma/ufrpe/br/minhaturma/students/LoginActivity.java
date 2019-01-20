@@ -14,6 +14,7 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import minhaturma.ufrpe.br.minhaturma.R;
 import minhaturma.ufrpe.br.minhaturma.MainActivity;
+import minhaturma.ufrpe.br.minhaturma.auth.AuthService;
 import minhaturma.ufrpe.br.minhaturma.commons.EntityObserver;
 import minhaturma.ufrpe.br.minhaturma.network.requests.StudentService;
 
@@ -26,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText mPasswordView;
 
     StudentService mStudentService;
+    AuthService mAuthService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +37,13 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         mStudentService = new StudentService();
-    }
+        mAuthService = AuthService.getInstance();
 
+        if (mAuthService.isAuthenticated()) {
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
+        }
+    }
 
     @OnClick(R.id.button_login)
     public void onLogin() {
@@ -47,7 +54,9 @@ public class LoginActivity extends AppCompatActivity {
         mStudentService.login(new Student(username, password), new EntityObserver<Student>() {
             @Override
             public void onNext(Student value) {
+                mAuthService.authenticate(value);
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                finish();
             }
 
             @Override

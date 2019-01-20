@@ -21,9 +21,11 @@ public class AuthInterceptor implements Interceptor {
 
         AuthService authService = AuthService.getInstance();
 
-        request = request.newBuilder()
-                .addHeader("Authorization", "Bearer " + authService.getAccessToken())
-                .build();
+        if (authService.isAuthenticated()) {
+            request = request.newBuilder()
+                    .addHeader("Authorization", authService.getAccessToken())
+                    .build();
+        }
 
         Response response = chain.proceed(request);
 
