@@ -24,7 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class BaseService {
 
-    private static final String API_URL = "http://3308816c.ngrok.io/";
+    private static final String API_URL = "http://minha-turma.herokuapp.com/";
 
     protected Retrofit mRetrofit;
 

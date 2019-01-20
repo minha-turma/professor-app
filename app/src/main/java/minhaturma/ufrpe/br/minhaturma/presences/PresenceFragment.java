@@ -145,7 +145,7 @@ public class PresenceFragment extends Fragment implements MTFragment, LecturesAd
     public void onLectureClick(Lecture lecture) {
         int userId = AuthService.getInstance().getLoggedUserId();
         lecture.setDate(null);
-        
+
         mPresenceService.add(new Presence(lecture, new Student(userId)), new EntityObserver<Presence>() {
             @Override
             public void onNext(Presence value) {
