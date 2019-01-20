@@ -9,7 +9,11 @@ import com.google.gson.JsonParseException;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.lang.reflect.Type;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 import minhaturma.ufrpe.br.minhaturma.network.interceptor.AuthInterceptor;
 import okhttp3.OkHttpClient;
@@ -46,10 +50,22 @@ public class BaseService {
                     public Date deserialize(JsonElement jsonElement, Type type,
                                             JsonDeserializationContext context)
                             throws JsonParseException {
-                        return new Date(jsonElement.getAsJsonPrimitive().getAsLong());
+
+                        try {
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+
+                            Date date = (dateFormat).parse(
+                                    jsonElement.getAsJsonPrimitive().getAsString());
+
+                            return date;
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+                        return new Date();
                     }
                 })
-                .setDateFormat("yyyy-MM-dd HH:mm:ss")
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ssz")
                 .create();
 
         builder.addConverterFactory(GsonConverterFactory.create(gson));

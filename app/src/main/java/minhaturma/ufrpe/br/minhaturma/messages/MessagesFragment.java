@@ -17,10 +17,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import minhaturma.ufrpe.br.minhaturma.R;
 import minhaturma.ufrpe.br.minhaturma.commons.EntityObserver;
-import minhaturma.ufrpe.br.minhaturma.commons.RefreshableView;
+import minhaturma.ufrpe.br.minhaturma.commons.MTFragment;
 import minhaturma.ufrpe.br.minhaturma.network.requests.MessageService;
 
-public class MessagesFragment extends Fragment implements RefreshableView {
+public class MessagesFragment extends Fragment implements MTFragment {
 
     @BindView(R.id.messages)
     RecyclerView mMessagesView;
@@ -58,6 +58,11 @@ public class MessagesFragment extends Fragment implements RefreshableView {
     @Override
     public void onRefresh() {
         refreshList();
+    }
+
+    @Override
+    public String getTitle() {
+        return "Mensagens";
     }
 
     private void refreshList() {

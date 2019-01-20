@@ -1,5 +1,6 @@
 package minhaturma.ufrpe.br.minhaturma.commons;
 
-public interface RefreshableView {
+public interface MTFragment {
     public void onRefresh();
+    public String getTitle();
 }

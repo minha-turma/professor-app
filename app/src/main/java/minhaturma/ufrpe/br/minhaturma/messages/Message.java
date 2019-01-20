@@ -1,5 +1,7 @@
 package minhaturma.ufrpe.br.minhaturma.messages;
 
+import java.util.Date;
+
 import javax.security.auth.Subject;
 
 import minhaturma.ufrpe.br.minhaturma.commons.Entity;
@@ -11,6 +13,7 @@ public class Message extends Entity {
     String content;
 
     User owner;
+    Date date;
 
     public Message(int id, String subject, String content, User owner) {
         super(id);
@@ -41,5 +44,13 @@ public class Message extends Entity {
 
     public void setOwner(User owner) {
         this.owner = owner;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.TimeZone;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,7 +40,12 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
 
         holder.subject.setText(message.getSubject());
         holder.content.setText(message.getContent());
-        holder.date.setText("22/22/22");
+        holder.sender.setText("De: " + message.getOwner().getName());
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/YY HH:mm");
+        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT-06:00"));
+
+        holder.date.setText(dateFormat.format(message.getDate()));
     }
 
     @Override
@@ -54,6 +61,8 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
         protected TextView content;
         @BindView(R.id.date)
         protected TextView date;
+        @BindView(R.id.from)
+        protected TextView sender;
         @BindView(R.id.container)
         protected View container;
 
