@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,18 +11,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import minhaturma.ufrpe.br.minhaturma.R;
 import minhaturma.ufrpe.br.minhaturma.commons.EntityObserver;
 import minhaturma.ufrpe.br.minhaturma.commons.MTFragment;
-import minhaturma.ufrpe.br.minhaturma.messages.Message;
-import minhaturma.ufrpe.br.minhaturma.messages.MessagesAdapter;
-import minhaturma.ufrpe.br.minhaturma.network.requests.MessageService;
-import minhaturma.ufrpe.br.minhaturma.network.requests.StudentService;
+import minhaturma.ufrpe.br.minhaturma.network.services.StudentService;
 
 public class ProfileFragment extends Fragment implements MTFragment {
 

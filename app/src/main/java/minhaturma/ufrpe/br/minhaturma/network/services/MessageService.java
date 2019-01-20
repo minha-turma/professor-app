@@ -1,4 +1,4 @@
-package minhaturma.ufrpe.br.minhaturma.network.requests;
+package minhaturma.ufrpe.br.minhaturma.network.services;
 
 
 import java.util.List;

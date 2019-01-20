@@ -1,14 +1,10 @@
-package minhaturma.ufrpe.br.minhaturma.network.requests;
+package minhaturma.ufrpe.br.minhaturma.network.services;
 
-
-import java.util.List;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import minhaturma.ufrpe.br.minhaturma.auth.AuthService;
-import minhaturma.ufrpe.br.minhaturma.messages.Message;
-import minhaturma.ufrpe.br.minhaturma.network.api.MessageApi;
 import minhaturma.ufrpe.br.minhaturma.network.api.StudentApi;
 import minhaturma.ufrpe.br.minhaturma.students.Student;
 

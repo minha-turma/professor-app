@@ -36,9 +36,19 @@ public class AuthService {
     return mSharedPreferences.getString("access_token", null);
   }
 
-  public void authenticate(User user) {
+  public int getLoggedUserId() {
+    return mSharedPreferences.getInt("id", 0);
+  }
+
+  public void saveAccessToken(String accessToken) {
     SharedPreferences.Editor editor = mSharedPreferences.edit();
-    editor.putString("access_token", user.getAccess_token());
+    editor.putString("access_token", accessToken);
+    editor.commit();
+  }
+
+  public void saveLoggedUserId(int id) {
+    SharedPreferences.Editor editor = mSharedPreferences.edit();
+    editor.putInt("id", id);
     editor.commit();
   }
 

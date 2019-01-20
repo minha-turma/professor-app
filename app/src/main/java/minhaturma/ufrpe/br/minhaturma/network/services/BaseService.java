@@ -1,4 +1,4 @@
-package minhaturma.ufrpe.br.minhaturma.network.requests;
+package minhaturma.ufrpe.br.minhaturma.network.services;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -11,9 +11,7 @@ import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.TimeZone;
 
 import minhaturma.ufrpe.br.minhaturma.network.interceptor.AuthInterceptor;
 import okhttp3.OkHttpClient;
@@ -26,7 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class BaseService {
 
-    private static final String API_URL = "http://minha-turma.herokuapp.com/";
+    private static final String API_URL = "http://3308816c.ngrok.io/";
 
     protected Retrofit mRetrofit;
 

@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -18,7 +17,7 @@ import butterknife.ButterKnife;
 import minhaturma.ufrpe.br.minhaturma.R;
 import minhaturma.ufrpe.br.minhaturma.commons.EntityObserver;
 import minhaturma.ufrpe.br.minhaturma.commons.MTFragment;
-import minhaturma.ufrpe.br.minhaturma.network.requests.MessageService;
+import minhaturma.ufrpe.br.minhaturma.network.services.MessageService;
 
 public class MessagesFragment extends Fragment implements MTFragment {
 
