@@ -19,6 +19,7 @@ import java.util.List;
 import minhaturma.ufrpe.br.minhaturma.assignments.AssignmentsFragment;
 import minhaturma.ufrpe.br.minhaturma.auth.AuthService;
 import minhaturma.ufrpe.br.minhaturma.commons.MTFragment;
+import minhaturma.ufrpe.br.minhaturma.confidence.ConfidencesFragment;
 import minhaturma.ufrpe.br.minhaturma.messages.MessagesFragment;
 import minhaturma.ufrpe.br.minhaturma.news.NewsFragment;
 import minhaturma.ufrpe.br.minhaturma.presences.PresenceFragment;
@@ -105,10 +106,12 @@ MainActivity extends AppCompatActivity
             ft.replace(R.id.fragment_container, NewsFragment.getInstance());
         } else if (id == R.id.presence) {
             ft.replace(R.id.fragment_container, PresenceFragment.getInstance());
+            setTitle(PresenceFragment.getInstance().getTitle());
         } else if (id == R.id.quiz) {
             ft.replace(R.id.fragment_container, QuizFragment.getInstance());
-        } else if (id == R.id.assignments) {
-            ft.replace(R.id.fragment_container, AssignmentsFragment.getInstance());
+        } else if (id == R.id.confidence) {
+            ft.replace(R.id.fragment_container, ConfidencesFragment.getInstance());
+            setTitle(ConfidencesFragment.getInstance().getTitle());
         } else if (id == R.id.messages) {
             ft.replace(R.id.fragment_container, MessagesFragment.getInstance(), MessagesFragment.TAG);
             setTitle(MessagesFragment.getInstance().getTitle());

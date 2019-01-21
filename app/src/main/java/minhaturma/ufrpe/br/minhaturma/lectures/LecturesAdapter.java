@@ -43,7 +43,7 @@ public class LecturesAdapter extends RecyclerView.Adapter<LecturesAdapter.ViewHo
     public LecturesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.lecture_item, parent, false);
 
-        itemView.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
+//        itemView.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
 
         return new ViewHolder(itemView);
     }
@@ -53,7 +53,7 @@ public class LecturesAdapter extends RecyclerView.Adapter<LecturesAdapter.ViewHo
         Lecture lecture = mList.get(position);
 
         holder.subject.setText(lecture.getSubject().getName());
-        holder.professor.setText(lecture.getOwner().getName());
+        holder.professor.setText("Professor: " + lecture.getOwner().getName());
 
         if (isOpen) {
             holder.status.setText("Stauts: Em andamento");

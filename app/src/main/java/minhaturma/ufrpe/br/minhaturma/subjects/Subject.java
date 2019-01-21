@@ -1,10 +1,18 @@
 package minhaturma.ufrpe.br.minhaturma.subjects;
 
-public class Subject {
+import minhaturma.ufrpe.br.minhaturma.commons.Entity;
+
+public class Subject extends Entity {
 
     String name;
 
-    public Subject(String name) {
+    public Subject(int id) {
+        super(id);
+        this.name = null;
+    }
+
+    public Subject(int id, String name) {
+        super(id);
         this.name = name;
     }
 

@@ -15,9 +15,9 @@
             android:icon="@drawable/baseline_view_list_black_24dp"
             android:title="Quiz" />
         <item
-            android:id="@+id/assignments"
-            android:icon="@drawable/baseline_book_black_24dp"
-            android:title="Minhas pesquisas" />
+            android:id="@+id/confidence"
+            android:icon="@drawable/round_thumb_up_black_24dp"
+            android:title="Auto confiança" />
         <item
           android:id="@+id/messages"
           android:icon="@drawable/baseline_mail_black_24dp"
