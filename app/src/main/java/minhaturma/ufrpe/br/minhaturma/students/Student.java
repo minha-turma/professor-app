@@ -4,6 +4,11 @@ public class Student extends User {
 
     String feeling;
 
+    public Student(int id) {
+        super(id, null, null, null, null);
+        this.feeling = null;
+    }
+
     public Student(String username, String password) {
         super(0, null, username, password, null);
         this.feeling = null;
@@ -14,5 +19,11 @@ public class Student extends User {
         this.feeling = feeling;
     }
 
+    public String getFeeling() {
+        return feeling;
+    }
 
+    public void setFeeling(String feeling) {
+        this.feeling = feeling;
+    }
 }

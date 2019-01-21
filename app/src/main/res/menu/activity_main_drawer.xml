@@ -15,9 +15,9 @@
             android:icon="@drawable/baseline_view_list_black_24dp"
             android:title="Quiz" />
         <item
-            android:id="@+id/assignments"
-            android:icon="@drawable/baseline_book_black_24dp"
-            android:title="Minhas pesquisas" />
+            android:id="@+id/confidence"
+            android:icon="@drawable/round_thumb_up_black_24dp"
+            android:title="Auto confiança" />
         <item
           android:id="@+id/messages"
           android:icon="@drawable/baseline_mail_black_24dp"
@@ -27,11 +27,11 @@
     <item android:title="Ações">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="Configurações" />
+                android:id="@+id/profile"
+                android:icon="@drawable/round_person_black_24dp"
+                android:title="Perfil" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/logout"
                 android:icon="@drawable/baseline_power_settings_new_black_24dp"
                 android:title="Sair" />
         </menu>

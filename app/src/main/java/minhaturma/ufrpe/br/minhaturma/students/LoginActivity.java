@@ -3,20 +3,17 @@ package minhaturma.ufrpe.br.minhaturma.students;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
 import minhaturma.ufrpe.br.minhaturma.R;
 import minhaturma.ufrpe.br.minhaturma.MainActivity;
 import minhaturma.ufrpe.br.minhaturma.auth.AuthService;
 import minhaturma.ufrpe.br.minhaturma.commons.EntityObserver;
-import minhaturma.ufrpe.br.minhaturma.network.requests.StudentService;
+import minhaturma.ufrpe.br.minhaturma.network.services.StudentService;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -54,9 +51,15 @@ public class LoginActivity extends AppCompatActivity {
         mStudentService.login(new Student(username, password), new EntityObserver<Student>() {
             @Override
             public void onNext(Student value) {
-                mAuthService.authenticate(value);
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                finish();
+                mAuthService.saveAccessToken(value.getAccess_token());
+                mStudentService.me(new EntityObserver<Student>() {
+                    @Override
+                    public void onNext(Student value) {
+                        mAuthService.saveLoggedUserId(value.getId());
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        finish();
+                    }
+                });
             }
 
             @Override
