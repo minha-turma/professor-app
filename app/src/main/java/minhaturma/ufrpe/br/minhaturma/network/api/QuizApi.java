@@ -1,16 +1,17 @@
 package minhaturma.ufrpe.br.minhaturma.network.api;
 
+import java.util.List;
+
 import io.reactivex.Observable;
-import minhaturma.ufrpe.br.minhaturma.students.Student;
-import retrofit2.http.Body;
-import retrofit2.http.POST;
+import minhaturma.ufrpe.br.minhaturma.quizzes.Quiz;
+import retrofit2.http.GET;
 
 /**
  * Created by tuliodesouza
  */
-public interface StudentApi {
+public interface QuizApi {
 
-    @POST("/api/login")
-    Observable<Student> login(@Body Student student);
+    @GET("/api/quiz")
+    Observable<List<Quiz>> list();
 
 }

@@ -10,4 +10,7 @@
     <dimen name="dialog_width">300dp</dimen>
     <dimen name="dialog_height">400dp</dimen>
 
+    <dimen name="answer_dialog_width">370dp</dimen>
+    <dimen name="answer_dialog_height">500dp</dimen>
+
 </resources>

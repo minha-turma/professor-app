@@ -41,12 +41,25 @@ public class ConfidencesAdapter extends RecyclerView.Adapter<ConfidencesAdapter.
         Confidence confidence = mList.get(position);
 
         holder.subject.setText(confidence.getSubject().getName());
-        holder.status.setBackgroundResource(R.drawable.smart);
+        holder.status.setBackgroundResource(getDrawableId(confidence.getStatus()));
     }
 
     @Override
     public int getItemCount() {
         return mList.size();
+    }
+
+    private int getDrawableId(String status) {
+        switch (status) {
+            case "Confident":
+                return R.drawable.smart;
+            case "Confused":
+                return R.drawable.confused;
+            case "Unsecure":
+                return R.drawable.suspicious;
+
+        }
+        return R.drawable.confused;
     }
 
     protected class ViewHolder extends RecyclerView.ViewHolder {

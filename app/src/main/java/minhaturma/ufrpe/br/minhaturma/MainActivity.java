@@ -109,6 +109,7 @@ MainActivity extends AppCompatActivity
             setTitle(PresenceFragment.getInstance().getTitle());
         } else if (id == R.id.quiz) {
             ft.replace(R.id.fragment_container, QuizFragment.getInstance());
+            setTitle(QuizFragment.getInstance().getTitle());
         } else if (id == R.id.confidence) {
             ft.replace(R.id.fragment_container, ConfidencesFragment.getInstance());
             setTitle(ConfidencesFragment.getInstance().getTitle());
