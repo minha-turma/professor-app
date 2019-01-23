@@ -13,10 +13,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import java.util.List;
 
-import minhaturma.ufrpe.br.minhaturma.assignments.AssignmentsFragment;
 import minhaturma.ufrpe.br.minhaturma.auth.AuthService;
 import minhaturma.ufrpe.br.minhaturma.commons.MTFragment;
 import minhaturma.ufrpe.br.minhaturma.confidence.ConfidencesFragment;
@@ -31,10 +32,14 @@ public class
 MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    TextView mStudentName;
+    TextView mStudentUsername;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -47,11 +52,19 @@ MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        navigationView.setCheckedItem(R.id.news);
+        navigationView.setCheckedItem(R.id.presence);
+
+        View header = navigationView.getHeaderView(0);
+
+        mStudentName = (TextView) header.findViewById(R.id.student_name);
+        mStudentUsername = (TextView) header.findViewById(R.id.student_username);
+
+        mStudentName.setText(AuthService.getInstance().getLoggedUserName());
+        mStudentUsername.setText("Matrícula: " + AuthService.getInstance().getLoggedUserUsername());
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.add(R.id.fragment_container, NewsFragment.getInstance());
+        ft.add(R.id.fragment_container, PresenceFragment.getInstance());
         ft.commit();
     }
 
@@ -102,9 +115,7 @@ MainActivity extends AppCompatActivity
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
 
-        if (id == R.id.news) {
-            ft.replace(R.id.fragment_container, NewsFragment.getInstance());
-        } else if (id == R.id.presence) {
+       if (id == R.id.presence) {
             ft.replace(R.id.fragment_container, PresenceFragment.getInstance());
             setTitle(PresenceFragment.getInstance().getTitle());
         } else if (id == R.id.quiz) {

@@ -27,7 +27,7 @@
                 android:maxLength="100"
                 android:ellipsize="end"
                 android:textColor="@android:color/primary_text_light"
-                android:textSize="18dp" />
+                android:textSize="16dp" />
 
 
             <LinearLayout

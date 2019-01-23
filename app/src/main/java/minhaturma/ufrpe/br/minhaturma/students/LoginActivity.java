@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                 mStudentService.me(new EntityObserver<Student>() {
                     @Override
                     public void onNext(Student value) {
-                        mAuthService.saveLoggedUserId(value.getId());
+                        mAuthService.saveLoggedUserInfo(value);
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         finish();
                     }

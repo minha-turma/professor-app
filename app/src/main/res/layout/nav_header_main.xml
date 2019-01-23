@@ -17,9 +17,10 @@
     android:layout_width="50dp"
     android:layout_height="50dp"
     android:layout_marginBottom="10dp"
-    app:srcCompat="@drawable/user1" />
+    app:srcCompat="@drawable/boy" />
 
   <TextView
+    android:id="@+id/student_name"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="Túlio de Souza Silva"
@@ -28,10 +29,9 @@
     android:textColor="#424242" />
 
   <TextView
-    android:id="@+id/textView"
+    android:id="@+id/student_username"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Matrícula - 08143152405"
     android:textColor="#424242" />
 
 </LinearLayout>

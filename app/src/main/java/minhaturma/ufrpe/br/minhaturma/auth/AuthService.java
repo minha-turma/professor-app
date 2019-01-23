@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import minhaturma.ufrpe.br.minhaturma.commons.MinhaTurma;
+import minhaturma.ufrpe.br.minhaturma.students.Student;
 import minhaturma.ufrpe.br.minhaturma.students.User;
 
 /**
@@ -39,6 +40,13 @@ public class AuthService {
   public int getLoggedUserId() {
     return mSharedPreferences.getInt("id", 0);
   }
+  public String getLoggedUserName() {
+    return mSharedPreferences.getString("name", null);
+  }
+  public String getLoggedUserUsername() {
+    return mSharedPreferences.getString("username", null);
+  }
+
 
   public void saveAccessToken(String accessToken) {
     SharedPreferences.Editor editor = mSharedPreferences.edit();
@@ -46,9 +54,11 @@ public class AuthService {
     editor.commit();
   }
 
-  public void saveLoggedUserId(int id) {
+  public void saveLoggedUserInfo(Student student) {
     SharedPreferences.Editor editor = mSharedPreferences.edit();
-    editor.putInt("id", id);
+    editor.putInt("id", student.getId());
+    editor.putString("name", student.getName());
+    editor.putString("username", student.getUsername());
     editor.commit();
   }
 
