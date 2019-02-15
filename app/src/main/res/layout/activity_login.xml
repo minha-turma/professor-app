@@ -20,17 +20,18 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
         android:gravity="center_horizontal"
-        android:text="3401"
-        android:hint="Login" />
+        android:hint="Login"
+        android:text="3416" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="54469"
         android:gravity="center_horizontal"
-        android:hint="Senha" />
+        android:hint="Senha"
+        android:inputType="textPassword"
+        android:text="67489" />
 
     <Button
         android:id="@+id/button_login"
