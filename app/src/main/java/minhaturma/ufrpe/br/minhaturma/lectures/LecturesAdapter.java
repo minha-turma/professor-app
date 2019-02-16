@@ -54,6 +54,7 @@ public class LecturesAdapter extends RecyclerView.Adapter<LecturesAdapter.ViewHo
 
         holder.subject.setText(lecture.getSubject().getName());
         holder.professor.setText("Professor: " + lecture.getOwner().getName());
+        holder.topic.setText("Assunto: " + lecture.topic);
 
         if (isOpen) {
             holder.status.setText("Stauts: Em andamento");
@@ -83,6 +84,8 @@ public class LecturesAdapter extends RecyclerView.Adapter<LecturesAdapter.ViewHo
         protected TextView status;
         @BindView(R.id.container)
         protected View container;
+        @BindView(R.id.topic)
+        protected TextView topic;
 
         public ViewHolder(View itemView) {
             super(itemView);

@@ -18,6 +18,11 @@
           android:id="@+id/messages"
           android:icon="@drawable/baseline_mail_black_24dp"
           android:title="Mensagens" />
+
+        <item
+            android:id="@+id/videos"
+            android:icon="@drawable/baseline_fiber_new_black_24dp"
+            android:title="Videos" />
     </group>
 
     <item android:title="Ações">

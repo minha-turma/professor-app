@@ -33,7 +33,14 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.RecyclerNewsVi
     public void onBindViewHolder(NewsAdapter.RecyclerNewsViewHolder holder, int position) {
         News pessoa = mList.get(position);
 
-        holder.viewTitle.setText(pessoa.getTitle());
+        holder.viewTitle.setText(pessoa.tituloVideo);
+        if(pessoa.getLinkVideo().contains("khan")){
+            holder.viewContent.setText("Khan Academy");
+        }else{
+            holder.viewContent.setText("You Tube");
+        }
+
+        holder.link = pessoa.linkVideo;
     }
 
     @Override
@@ -45,11 +52,12 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.RecyclerNewsVi
 
         protected TextView viewTitle;
         protected TextView viewContent;
+        protected String link;
 
         public RecyclerNewsViewHolder(View itemView) {
             super(itemView);
-            viewTitle = itemView.findViewById(R.id.textView_newsTitle);
-            viewContent = itemView.findViewById(R.id.textView_newsContent);
+            viewTitle = itemView.findViewById(R.id.link);
+            viewContent = itemView.findViewById(R.id.source);
 
             //Setup the click listener
             itemView.setOnClickListener(new View.OnClickListener() {

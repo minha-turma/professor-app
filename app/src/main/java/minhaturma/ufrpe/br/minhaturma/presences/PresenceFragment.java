@@ -1,11 +1,14 @@
 package minhaturma.ufrpe.br.minhaturma.presences;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +48,9 @@ public class PresenceFragment extends Fragment implements MTFragment, LecturesAd
 
     LectureService mLectureService;
     PresenceService mPresenceService;
+
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
     public static PresenceFragment getInstance() {
         if (instance == null) {
@@ -146,11 +152,24 @@ public class PresenceFragment extends Fragment implements MTFragment, LecturesAd
         int userId = AuthService.getInstance().getLoggedUserId();
         lecture.setDate(null);
 
+        Log.d("AKE",lecture+"");
+
         mPresenceService.add(new Presence(lecture, new Student(userId)), new EntityObserver<Presence>() {
             @Override
             public void onNext(Presence value) {
                 retrieve();
             }
         });
+
+        sharedPreferences = getActivity().getSharedPreferences("Topic", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        editor.putString("Topic", lecture.getTopic());
+        editor.apply();
+
+        sharedPreferences = getActivity().getSharedPreferences("Topic", Context.MODE_PRIVATE);
+        String result = sharedPreferences.getString("Topic", "");
+        Log.e("AKE","Result: "+result);
+
+
     }
 }

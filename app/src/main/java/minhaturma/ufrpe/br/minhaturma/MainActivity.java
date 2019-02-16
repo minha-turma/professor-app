@@ -38,6 +38,7 @@ MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -130,7 +131,10 @@ MainActivity extends AppCompatActivity
         } else if (id == R.id.profile) {
             ft.replace(R.id.fragment_container, ProfileFragment.getInstance(), ProfileFragment.TAG);
             setTitle(ProfileFragment.getInstance().getTitle());
-        } else if (id == R.id.logout) {
+        }else if (id == R.id.videos) {
+           ft.replace(R.id.fragment_container, NewsFragment.getInstance(), NewsFragment.TAG);
+           setTitle(ProfileFragment.getInstance().getTitle());
+       } else if (id == R.id.logout) {
             logout();
         }
 
@@ -160,4 +164,5 @@ MainActivity extends AppCompatActivity
         startActivity(new Intent(MainActivity.this, LoginActivity.class));
         finish();
     }
+
 }
