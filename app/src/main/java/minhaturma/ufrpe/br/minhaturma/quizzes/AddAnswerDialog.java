@@ -109,7 +109,7 @@ public class AddAnswerDialog extends DialogFragment {
         mAnswerService.add(answer, new EntityObserver<Answer>() {
             @Override
             public void onNext(Answer value) {
-                Toast.makeText(getContext(), "Auto confiança adicionada", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Pergunta Respondida!", Toast.LENGTH_SHORT).show();
                 dismiss();
             }
         });

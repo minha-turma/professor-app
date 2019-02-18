@@ -11,13 +11,17 @@ public class Quiz extends Entity {
     List<String> alternatives;
     String correct;
     User owner;
+    boolean isOpen;
+    String topic;
 
-    public Quiz(int id, String statement, List<String> alternatives, String correct, User owner) {
+    public Quiz(int id, String statement, List<String> alternatives, String correct, User owner, boolean IsOpen, String topic) {
         super(id);
         this.statement = statement;
         this.alternatives = alternatives;
         this.correct = correct;
         this.owner = owner;
+        this.isOpen = IsOpen;
+        this.topic = topic;
     }
 
     public Quiz(int id) {
@@ -54,5 +58,33 @@ public class Quiz extends Entity {
 
     public void setOwner(User owner) {
         this.owner = owner;
+    }
+
+    public boolean isOpen() {
+        return isOpen;
+    }
+
+    public void setOpen(boolean open) {
+        isOpen = open;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+
+    @Override
+    public String toString() {
+        return "Quiz{" +
+                "statement='" + statement + '\'' +
+                ", alternatives=" + alternatives +
+                ", correct='" + correct + '\'' +
+                ", owner=" + owner +
+                ", IsOpen=" + isOpen +
+                ", topic='" + topic + '\'' +
+                '}';
     }
 }

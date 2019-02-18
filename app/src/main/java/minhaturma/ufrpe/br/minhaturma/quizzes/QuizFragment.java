@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +20,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import minhaturma.ufrpe.br.minhaturma.R;
-import minhaturma.ufrpe.br.minhaturma.auth.AuthService;
 import minhaturma.ufrpe.br.minhaturma.commons.EntityObserver;
 import minhaturma.ufrpe.br.minhaturma.commons.MTFragment;
-import minhaturma.ufrpe.br.minhaturma.confidence.AddConfidenceDialog;
 import minhaturma.ufrpe.br.minhaturma.network.services.QuizService;
 import minhaturma.ufrpe.br.minhaturma.network.services.AnswerService;
 
@@ -55,11 +54,11 @@ public class QuizFragment extends Fragment implements MTFragment, QuizAdapter.On
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_quiz, container, false);
+        View view = inflater.inflate(R.layout.fragment_quiza, container, false);
         ButterKnife.bind(this, view);
 
         LinearLayoutManager layoutManager
-                = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+                = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mOpenQuizzesView.setLayoutManager(layoutManager);
 
         final LinearSnapHelper snapHelper = new LinearSnapHelper();
@@ -94,8 +93,9 @@ public class QuizFragment extends Fragment implements MTFragment, QuizAdapter.On
                         List<Quiz> attemptedQuizes = new ArrayList<>();
 
                         for(Quiz quiz : quizzes) {
+                            Log.d("AKE",quiz+"");
                             if (!hasAttempted(quiz, answers)) {
-                                openQuizs.add(quiz);
+                                if(quiz.isOpen) openQuizs.add(quiz);
                             } else {
                                 attemptedQuizes.add(quiz);
                             }
