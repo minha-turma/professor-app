@@ -23,6 +23,10 @@
             android:id="@+id/videos"
             android:icon="@drawable/baseline_fiber_new_black_24dp"
             android:title="Videos" />
+        <item
+            android:id="@+id/reports"
+            android:icon="@drawable/ic_reports"
+            android:title="Relatórios" />
     </group>
 
     <item android:title="Ações">

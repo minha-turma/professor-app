@@ -25,6 +25,7 @@ import minhaturma.ufrpe.br.minhaturma.messages.MessagesFragment;
 import minhaturma.ufrpe.br.minhaturma.news.NewsFragment;
 import minhaturma.ufrpe.br.minhaturma.presences.PresenceFragment;
 import minhaturma.ufrpe.br.minhaturma.quizzes.QuizFragment;
+import minhaturma.ufrpe.br.minhaturma.reports.ReportsFragment;
 import minhaturma.ufrpe.br.minhaturma.students.LoginActivity;
 import minhaturma.ufrpe.br.minhaturma.students.ProfileFragment;
 
@@ -46,7 +47,7 @@ MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-            this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
@@ -116,7 +117,7 @@ MainActivity extends AppCompatActivity
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
 
-       if (id == R.id.presence) {
+        if (id == R.id.presence) {
             ft.replace(R.id.fragment_container, PresenceFragment.getInstance());
             setTitle(PresenceFragment.getInstance().getTitle());
         } else if (id == R.id.quiz) {
@@ -132,9 +133,12 @@ MainActivity extends AppCompatActivity
             ft.replace(R.id.fragment_container, ProfileFragment.getInstance(), ProfileFragment.TAG);
             setTitle(ProfileFragment.getInstance().getTitle());
         }else if (id == R.id.videos) {
-           ft.replace(R.id.fragment_container, NewsFragment.getInstance(), NewsFragment.TAG);
-           setTitle(ProfileFragment.getInstance().getTitle());
-       } else if (id == R.id.logout) {
+            ft.replace(R.id.fragment_container, NewsFragment.getInstance(), NewsFragment.TAG);
+            setTitle(NewsFragment.getInstance().getTitle());
+        }else if (id == R.id.reports) {
+            ft.replace(R.id.fragment_container, ReportsFragment.getInstance(), ReportsFragment.TAG);
+            setTitle(ReportsFragment.getInstance().getTitle());
+        } else if (id == R.id.logout) {
             logout();
         }
 
