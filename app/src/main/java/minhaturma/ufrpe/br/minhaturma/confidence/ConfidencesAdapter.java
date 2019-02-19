@@ -41,6 +41,7 @@ public class ConfidencesAdapter extends RecyclerView.Adapter<ConfidencesAdapter.
         Confidence confidence = mList.get(position);
 
         holder.subject.setText(confidence.getSubject().getName());
+        holder.topic.setText(confidence.getTopic());
         holder.status.setBackgroundResource(getDrawableId(confidence.getStatus()));
     }
 
@@ -66,6 +67,8 @@ public class ConfidencesAdapter extends RecyclerView.Adapter<ConfidencesAdapter.
 
         @BindView(R.id.subject)
         protected TextView subject;
+        @BindView(R.id.topic)
+        protected TextView topic;
         @BindView(R.id.confidence_status_image)
         protected ImageView status;
         @BindView(R.id.container)

@@ -170,6 +170,5 @@ public class PresenceFragment extends Fragment implements MTFragment, LecturesAd
         String result = sharedPreferences.getString("Topic", "");
         Log.e("AKE","Result: "+result);
 
-
     }
 }

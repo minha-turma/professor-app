@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -34,6 +36,8 @@ public class AddConfidenceDialog extends DialogFragment {
 
     @BindView(R.id.subject_spinner)
     Spinner mSubjectsDropdown;
+    @BindView(R.id.topic_spinner)
+    Spinner mTopicsDropdown;
 
     @BindView(R.id.smart)
     ImageView mSmart;
@@ -46,6 +50,7 @@ public class AddConfidenceDialog extends DialogFragment {
     ConfidenceService mConfidenceService;
 
     List<Subject> mSubjects;
+    List<String> topics;
 
     String status = "";
 
@@ -136,8 +141,32 @@ public class AddConfidenceDialog extends DialogFragment {
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, items);
                 mSubjectsDropdown.setAdapter(adapter);
                 mSubjects = value;
+
             }
         });
+
+        AdapterView.OnItemSelectedListener itemSelectedListener = new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ArrayList<String> items = new ArrayList<>();
+
+                for(String s:mSubjects.get(i).getTopic()){
+                    items.add(s);
+                }
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, items);
+                mTopicsDropdown.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        };
+
+        mSubjectsDropdown.setOnItemSelectedListener(itemSelectedListener);
+
     }
 
     private void updateConfidenceView() {

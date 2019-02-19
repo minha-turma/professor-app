@@ -7,24 +7,24 @@ import minhaturma.ufrpe.br.minhaturma.commons.Entity;
 public class Subject extends Entity {
 
     String name;
-    String topic;
+    List<String> topics;
 
     public Subject(int id) {
         super(id);
         this.name = null;
-        this.topic = "Vida devolva minhas fantasias";
+        this.topics = null;
     }
 
     public Subject(int id, String name) {
         super(id);
         this.name = name;
-        this.topic = "Vida";
+        this.topics = null;
     }
 
-    public Subject(int id, String name, String topic) {
+    public Subject(int id, String name, List<String> topics) {
         super(id);
         this.name = name;
-        this.topic = "Ximbalaie";
+        this.topics = topics;
     }
 
     public String getName() {
@@ -35,7 +35,11 @@ public class Subject extends Entity {
         this.name = name;
     }
 
-    public String getTopic() {
-        return topic;
+    public List<String> getTopic() {
+        return topics;
+    }
+
+    public void setTopic(List<String> topic) {
+        this.topics = topic;
     }
 }

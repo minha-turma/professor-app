@@ -8,11 +8,20 @@ public class Confidence {
     String status;
     Student student;
     Subject subject;
+    String topic;
 
     public Confidence(String status, Student student, Subject subject) {
         this.status = status;
         this.student = student;
         this.subject = subject;
+        this.topic = "Ximbalaie quando vejo o sol beijando o mar";
+    }
+
+    public Confidence(String status, Student student, Subject subject, String topic) {
+        this.status = status;
+        this.student = student;
+        this.subject = subject;
+        this.topic = "Vida devolva minhas fantasias meu sonho de viver um dia";
     }
 
     public String getStatus() {
@@ -37,5 +46,13 @@ public class Confidence {
 
     public void setSubject(Subject subject) {
         this.subject = subject;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
     }
 }

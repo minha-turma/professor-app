@@ -27,6 +27,14 @@
             android:background="@android:drawable/btn_dropdown"
             android:spinnerMode="dropdown"/>
 
+        <Spinner
+            android:id="@+id/topic_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -44,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:padding="15dp"
                 android:layout_weight="1"
-                android:src="@drawable/smart" />
+                android:src="@drawable/smarta" />
 
             <ImageView
                 android:id="@+id/confused"
@@ -52,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:padding="15dp"
                 android:layout_weight="1"
-                android:src="@drawable/confused" />
+                android:src="@drawable/confuseda" />
 
             <ImageView
                 android:id="@+id/unsecure"
@@ -60,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:padding="15dp"
                 android:layout_weight="1"
-                android:src="@drawable/suspicious" />
+                android:src="@drawable/suspiciousa" />
 
         </LinearLayout>
 
