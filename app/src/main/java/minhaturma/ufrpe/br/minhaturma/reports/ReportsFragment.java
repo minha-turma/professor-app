@@ -1,29 +1,46 @@
 package minhaturma.ufrpe.br.minhaturma.reports;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import minhaturma.ufrpe.br.minhaturma.R;
 import minhaturma.ufrpe.br.minhaturma.commons.MTFragment;
+import minhaturma.ufrpe.br.minhaturma.news.ClickRecyclerView_Interface;
+import minhaturma.ufrpe.br.minhaturma.presences.PresenceFragment;
+import minhaturma.ufrpe.br.minhaturma.reports.items.ConfidenceReportFragment;
+import minhaturma.ufrpe.br.minhaturma.reports.items.HumorReportFragment;
+import minhaturma.ufrpe.br.minhaturma.reports.items.PresenceReportFragment;
+import minhaturma.ufrpe.br.minhaturma.reports.items.QuizReportFragment;
 
-public class ReportsFragment extends Fragment implements MTFragment {
+public class ReportsFragment extends Fragment implements MTFragment, View.OnClickListener {
 
     public static final String TAG = "ReportsFragment";
     static ReportsFragment instance;
+
 
     public static ReportsFragment getInstance() {
         if (instance == null) {
@@ -38,48 +55,23 @@ public class ReportsFragment extends Fragment implements MTFragment {
         View view = inflater.inflate(R.layout.reports_chart, container, false);
         ButterKnife.bind(this, view);
 
+        Button btnQuiz = view.findViewById(R.id.Quiz);
+        Button btnPresenca = view.findViewById(R.id.Presenca);
+        Button btnHumor = view.findViewById(R.id.Humor);
+        Button btnAutoconfianca = view.findViewById(R.id.Autoconfianca);
+
+        btnQuiz.setOnClickListener(this);
+        btnPresenca.setOnClickListener(this);
+        btnHumor.setOnClickListener(this);
+        btnAutoconfianca.setOnClickListener(this);
+
         return view;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //createGraph(view);
     }
-
-    /*private void createGraph(View view) {
-        @SuppressLint("ResourceType") PieChart pieChart = view.findViewById(R.id.reports);
-        ArrayList NoOfEmp = new ArrayList();
-
-        NoOfEmp.add(new Entry(945f, 0));
-        NoOfEmp.add(new Entry(1040f, 1));
-        NoOfEmp.add(new Entry(1133f, 2));
-        NoOfEmp.add(new Entry(1240f, 3));
-        NoOfEmp.add(new Entry(1369f, 4));
-        NoOfEmp.add(new Entry(1487f, 5));
-        NoOfEmp.add(new Entry(1501f, 6));
-        NoOfEmp.add(new Entry(1645f, 7));
-        NoOfEmp.add(new Entry(1578f, 8));
-        NoOfEmp.add(new Entry(1695f, 9));
-        PieDataSet dataSet = new PieDataSet(NoOfEmp, "Number Of Employees");
-
-        ArrayList year = new ArrayList();
-
-        year.add("2008");
-        year.add("2009");
-        year.add("2010");
-        year.add("2011");
-        year.add("2012");
-        year.add("2013");
-        year.add("2014");
-        year.add("2015");
-        year.add("2016");
-        year.add("2017");
-        PieData data = new PieData(year, dataSet);
-        pieChart.setData(data);
-        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        pieChart.animateXY(5000, 5000);
-    }*/
 
     @Override
     public void onRefresh() {
@@ -89,5 +81,52 @@ public class ReportsFragment extends Fragment implements MTFragment {
     @Override
     public String getTitle() {
         return "Relatórios";
+    }
+/*
+    private void proximaTela() {
+
+        int id = 0;
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+
+        if (id == R.id.Quiz) {
+            ft.replace(R.id.fragment_container, QuizReportFragment.getInstance());
+            getActivity().setTitle(QuizReportFragment.getInstance().getTitle());
+        } else if (id == R.id.Presenca) {
+            ft.replace(R.id.fragment_container, PresenceReportFragment.getInstance());
+            getActivity().setTitle(PresenceReportFragment.getInstance().getTitle());
+        } else if (id == R.id.Humor) {
+            ft.replace(R.id.fragment_container, HumorReportFragment.getInstance());
+            getActivity().setTitle(HumorReportFragment.getInstance().getTitle());
+        } else if (id == R.id.Autoconfianca) {
+            ft.replace(R.id.fragment_container, ConfidenceReportFragment.getInstance());
+            getActivity().setTitle(ConfidenceReportFragment.getInstance().getTitle());
+        }
+    }*/
+
+    @Override
+    public void onClick(View view) {
+        Fragment f;
+
+        if (view.getId() == R.id.Quiz) {
+            f = new QuizReportFragment();
+            replaceFragment(f);
+        } else if (view.getId() == R.id.Presenca) {
+            f = new PresenceReportFragment();
+            replaceFragment(f);
+        } else if (view.getId() == R.id.Humor) {
+            f = new HumorReportFragment();
+            replaceFragment(f);
+        } else if (view.getId() == R.id.Autoconfianca) {
+            f = new ConfidenceReportFragment();
+            replaceFragment(f);
+        }
+    }
+
+    private void replaceFragment(Fragment someFragment) {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, someFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }
