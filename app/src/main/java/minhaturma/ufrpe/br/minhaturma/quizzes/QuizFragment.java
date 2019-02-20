@@ -1,6 +1,8 @@
 package minhaturma.ufrpe.br.minhaturma.quizzes;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,8 +16,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,6 +49,9 @@ public class QuizFragment extends Fragment implements MTFragment, QuizAdapter.On
 
     QuizService mQuizService;
     AnswerService mAnswerService;
+
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
     public static QuizFragment getInstance() {
         if (instance == null) {
@@ -100,6 +109,13 @@ public class QuizFragment extends Fragment implements MTFragment, QuizAdapter.On
                                 attemptedQuizes.add(quiz);
                             }
                         }
+
+                        sharedPreferences = getActivity().getSharedPreferences("AttemptedQuizzes", Context.MODE_PRIVATE);
+                        editor = sharedPreferences.edit();
+                        Gson gson = new Gson();
+                        String json = gson.toJson(attemptedQuizes);
+                        editor.putString("AttemptedQuizzes", json);
+                        editor.apply();
 
                         QuizAdapter adapter = new QuizAdapter(getContext(), openQuizs);
                         mOpenQuizzesView.setAdapter(adapter);

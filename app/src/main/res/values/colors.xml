@@ -8,4 +8,7 @@
     <color name="colorAccentDark">#c56200</color>
     <color name="colorPrimaryText">#000000</color>
     <color name="colorAccentText">#000000</color>
+
+    <color name="redBar">#ff1744</color>
+    <color name="blueBar">#2979ff</color>
 </resources>
