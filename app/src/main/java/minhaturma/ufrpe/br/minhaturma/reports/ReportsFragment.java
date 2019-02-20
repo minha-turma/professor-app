@@ -16,16 +16,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import minhaturma.ufrpe.br.minhaturma.R;
 import minhaturma.ufrpe.br.minhaturma.commons.MTFragment;
@@ -41,6 +35,9 @@ public class ReportsFragment extends Fragment implements MTFragment, View.OnClic
     public static final String TAG = "ReportsFragment";
     static ReportsFragment instance;
 
+    @BindView(R.id.quiz)
+    private Button btnQuiz;
+
 
     public static ReportsFragment getInstance() {
         if (instance == null) {
@@ -52,13 +49,13 @@ public class ReportsFragment extends Fragment implements MTFragment, View.OnClic
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.reports_chart, container, false);
+        View view = inflater.inflate(R.layout.perfil_fragment, container, false);
         ButterKnife.bind(this, view);
 
-        Button btnQuiz = view.findViewById(R.id.Quiz);
-        Button btnPresenca = view.findViewById(R.id.Presenca);
-        Button btnHumor = view.findViewById(R.id.Humor);
-        Button btnAutoconfianca = view.findViewById(R.id.Autoconfianca);
+        Button btnQuiz = view.findViewById(R.id.quiz);
+        Button btnPresenca = view.findViewById(R.id.presenca);
+        Button btnHumor = view.findViewById(R.id.humor);
+        Button btnAutoconfianca = view.findViewById(R.id.autoconfianca);
 
         btnQuiz.setOnClickListener(this);
         btnPresenca.setOnClickListener(this);
