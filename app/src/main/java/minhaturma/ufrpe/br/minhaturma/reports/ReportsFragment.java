@@ -36,7 +36,7 @@ import minhaturma.ufrpe.br.minhaturma.reports.items.HumorReportFragment;
 import minhaturma.ufrpe.br.minhaturma.reports.items.PresenceReportFragment;
 import minhaturma.ufrpe.br.minhaturma.reports.items.QuizReportFragment;
 
-public class ReportsFragment extends Fragment implements MTFragment, View.OnClickListener {
+public class ReportsFragment extends Fragment implements MTFragment {
 
     public static final String TAG = "ReportsFragment";
     static ReportsFragment instance;
@@ -52,18 +52,8 @@ public class ReportsFragment extends Fragment implements MTFragment, View.OnClic
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.reports_chart, container, false);
+        View view = inflater.inflate(R.layout.perfil_fragment, container, false);
         ButterKnife.bind(this, view);
-
-        Button btnQuiz = view.findViewById(R.id.Quiz);
-        Button btnPresenca = view.findViewById(R.id.Presenca);
-        Button btnHumor = view.findViewById(R.id.Humor);
-        Button btnAutoconfianca = view.findViewById(R.id.Autoconfianca);
-
-        btnQuiz.setOnClickListener(this);
-        btnPresenca.setOnClickListener(this);
-        btnHumor.setOnClickListener(this);
-        btnAutoconfianca.setOnClickListener(this);
 
         return view;
     }
@@ -71,6 +61,7 @@ public class ReportsFragment extends Fragment implements MTFragment, View.OnClic
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        showFragment(view);
     }
 
     @Override
@@ -82,45 +73,41 @@ public class ReportsFragment extends Fragment implements MTFragment, View.OnClic
     public String getTitle() {
         return "Relatórios";
     }
-/*
-    private void proximaTela() {
 
-        int id = 0;
-        FragmentManager fm = getActivity().getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
+    private void showFragment(View view) {
+        Button btnQuiz = view.findViewById(R.id.Quiz);
+        Button btnPresenca = view.findViewById(R.id.Presenca);
+        Button btnHumor = view.findViewById(R.id.Humor);
+        Button btnAutoconfianca = view.findViewById(R.id.Autoconfianca);
 
-        if (id == R.id.Quiz) {
-            ft.replace(R.id.fragment_container, QuizReportFragment.getInstance());
-            getActivity().setTitle(QuizReportFragment.getInstance().getTitle());
-        } else if (id == R.id.Presenca) {
-            ft.replace(R.id.fragment_container, PresenceReportFragment.getInstance());
-            getActivity().setTitle(PresenceReportFragment.getInstance().getTitle());
-        } else if (id == R.id.Humor) {
-            ft.replace(R.id.fragment_container, HumorReportFragment.getInstance());
-            getActivity().setTitle(HumorReportFragment.getInstance().getTitle());
-        } else if (id == R.id.Autoconfianca) {
-            ft.replace(R.id.fragment_container, ConfidenceReportFragment.getInstance());
-            getActivity().setTitle(ConfidenceReportFragment.getInstance().getTitle());
-        }
-    }*/
-
-    @Override
-    public void onClick(View view) {
-        Fragment f;
-
-        if (view.getId() == R.id.Quiz) {
-            f = new QuizReportFragment();
-            replaceFragment(f);
-        } else if (view.getId() == R.id.Presenca) {
-            f = new PresenceReportFragment();
-            replaceFragment(f);
-        } else if (view.getId() == R.id.Humor) {
-            f = new HumorReportFragment();
-            replaceFragment(f);
-        } else if (view.getId() == R.id.Autoconfianca) {
-            f = new ConfidenceReportFragment();
-            replaceFragment(f);
-        }
+        btnQuiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment f = new QuizReportFragment();
+                replaceFragment(f);
+            }
+        });
+        btnPresenca.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment f = new PresenceReportFragment();
+                replaceFragment(f);
+            }
+        });
+        btnHumor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment f = new HumorReportFragment();
+                replaceFragment(f);
+            }
+        });
+        btnAutoconfianca.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment f = new ConfidenceReportFragment();
+                replaceFragment(f);
+            }
+        });
     }
 
     private void replaceFragment(Fragment someFragment) {
