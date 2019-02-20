@@ -50,7 +50,7 @@ public class AddConfidenceDialog extends DialogFragment {
     ConfidenceService mConfidenceService;
 
     List<Subject> mSubjects;
-    List<String> topics;
+    List<String> mTopics;
 
     String status = "";
 
@@ -106,17 +106,26 @@ public class AddConfidenceDialog extends DialogFragment {
     public void addConfidence() {
         Student me = new Student(AuthService.getInstance().getLoggedUserId());
         Subject subject = null;
+        String topic = null;
         for (Subject s : mSubjects) {
             if (s.getName().equals(mSubjectsDropdown.getSelectedItem())) {
                 subject = s;
             }
         }
 
-        Confidence confidence = new Confidence(status, me, subject);
+        for(String s : mTopics){
+            if(s.equals(mTopicsDropdown.getSelectedItem())){
+                topic = s;
+            }
+        }
+
+        Confidence confidence = new Confidence(status, me, subject, topic);
+        Log.d("AKE",confidence+"");
         mConfidenceService.add(confidence, new EntityObserver<Confidence>() {
             @Override
             public void onNext(Confidence value) {
                 Toast.makeText(getContext(), "Auto confiança adicionada", Toast.LENGTH_SHORT).show();
+
                 dismiss();
             }
         });
@@ -156,6 +165,7 @@ public class AddConfidenceDialog extends DialogFragment {
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, items);
                 mTopicsDropdown.setAdapter(adapter);
+                mTopics = items;
 
             }
 
