@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/quiz"
+            android:id="@+id/Quiz"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Quiz"
@@ -28,21 +28,21 @@
             tools:layout_editor_absoluteY="32dp" />
 
         <Button
-            android:id="@+id/presenca"
+            android:id="@+id/Presenca"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Presença"
             tools:layout_editor_absoluteX="300dp" />
 
         <Button
-            android:id="@+id/humor"
+            android:id="@+id/Humor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Humor"
             tools:layout_editor_absoluteX="307dp" />
 
         <Button
-            android:id="@+id/autoconfianca"
+            android:id="@+id/Autoconfianca"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Autoconfiança"
